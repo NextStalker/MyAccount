@@ -42,8 +42,6 @@ namespace MyAccount.Service
             server.OpenAsync().Wait();
             logger.Information("HttpSelfHostServer работает");
             Console.ReadLine();
-
-            server.CloseAsync();
         }
 
         private static void RunSecondService()
