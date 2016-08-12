@@ -11,7 +11,7 @@ namespace MyAccount.Service.Logging
     public static class LogManager
     {
         private static ILogger logger = new LoggerConfiguration()
-             .MinimumLevel.Fatal()
+             .MinimumLevel.Debug()
              .WriteTo.ColoredConsole()
              .WriteTo.RollingFile(@"Log-{Date}.txt")
              .CreateLogger();

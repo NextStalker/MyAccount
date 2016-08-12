@@ -26,21 +26,19 @@ namespace MyAccount.Service
 
         private static void RunFirstService()
         {
-            logger.Debug("Создаём HttpSelfHostConfiguration");
             HttpSelfHostConfiguration configuration = new HttpSelfHostConfiguration("http://localhost:2222");
 
-            logger.Debug("Прописываем Routes");
             configuration.Routes.MapHttpRoute(
                 name: "MyService",
                 routeTemplate: "import.{controller}",
                 defaults: null);
             
-            logger.Debug("Создаём HttpSelfHostServer");
+            logger.Debug("HttpSelfHostServer создаётся");
             HttpSelfHostServer server = new HttpSelfHostServer(configuration);
 
-            logger.Debug("Запускаем HttpSelfHostServer");
+            logger.Debug("HttpSelfHostServer запускаем");
             server.OpenAsync().Wait();
-            logger.Information("HttpSelfHostServer работает");
+            logger.Information("HttpSelfHostServer запустился");
             Console.ReadLine();
         }
 
@@ -49,11 +47,12 @@ namespace MyAccount.Service
             Type serviceType = typeof(UserInfoProvider);
             Uri uri = new Uri("http://localhost:8080/");
 
-            logger.Debug("Создаём ServiceHost");
+            logger.Debug("ServiceHost создаётся");
             ServiceHost host = new ServiceHost(serviceType, uri);
             
-            logger.Debug("Запускаем ServiceHost");
+            logger.Debug("ServiceHost запускаем");
             host.Open();
+            logger.Information("ServiceHost запустился");
         }
     }
 }
